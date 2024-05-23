@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::prefix('')->group(function () {
+Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [DasboardController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
     Route::middleware('auth')->group(function () {
         // Category Route
@@ -85,7 +85,8 @@ Route::get('/compliance', [HomeController::class, 'compliance']);
 Route::get('/apps-products', [HomeController::class, 'apps_products']);
 //  Route::get('/finance', [HomeController::class, 'finance']);
 //  Route::get('/news', [HomeController::class, 'news']);
-Route::get('/{slug_url}', [HomeController::class, 'business'])->name('business');
+Route::get('business/{slug_url}', [HomeController::class, 'business'])->name('business');
+
 
 // Route::get('/fashion', [HomeController::class, 'fashion']);
 Route::get('show/{slug_url}', [HomeController::class, 'show'])->name('show');
